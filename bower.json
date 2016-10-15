@@ -8,11 +8,7 @@
     "menu",
     "navigation"
   ],
-  "authors": [
-    "Alexander Slepchenko"
-  ],
-  "license": "MIT",
   "ignore": [
-    ".*", 
+    ".*" 
   ]
 }
