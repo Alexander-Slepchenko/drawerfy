@@ -61,6 +61,10 @@
    * Initialise Menu Events.
    */
   drawerfy.prototype._initEvents = function() {
+    this.openMenu.addEventListener('click', function(e){      
+      e.preventDefault();
+      this.open();
+    }.bind(this));
     
     this.closeMenu.addEventListener('click', function(e) {
       e.preventDefault();
