@@ -53,7 +53,7 @@
     this.overlay = document.querySelector(this.options.overlay);
     this.menu = document.querySelector('.drawer-' + this.options.type);
     this.closeMenu = document.querySelector(this.options.close);
-    this.openMenu = document.querySelectorAll(this.options.open);
+    this.openMenu = document.querySelector(this.options.open);
     this._initEvents();
   };
 
@@ -71,7 +71,6 @@
       this.close();
     }.bind(this));
 
-   
     this.overlay.addEventListener('click', function(e) {
       e.preventDefault();
       this.close();
