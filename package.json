@@ -1,0 +1,21 @@
+{
+  "name": "drawerfy",
+  "version": "1.1.0",
+  "description": "drawer menu",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alexander-Slepchenko/drawerfy.git"
+  },
+  "keywords": [
+    "drawer",
+    "menu",
+    "navigation"
+  ],
+  "author": "Slepchenko Alexander",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Alexander-Slepchenko/drawerfy/issues"
+  },
+  "homepage": "https://github.com/Alexander-Slepchenko/drawerfy#readme"
+}
