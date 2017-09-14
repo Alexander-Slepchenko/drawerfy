@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Drawerfy - Demo</title>
+  <link href="../dist/css/drawerfy.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="overlay"></div>
+  <nav class="drawer-left">
+    <li><a href="">Demo</a></li>
+    <li><a href="">Demo</a></li>
+    <li><a href="">Demo</a></li>
+  </nav>
+  <nav class="drawer-right">
+    <li><a href="">Demo</a></li>
+    <li><a href="">Demo</a></li>
+    <li><a href="">Demo</a></li>
+  </nav>
+  <div class="wrapper">
+    <header></header>
+    <main>
+      <button class="open-drawer-left">Open Left</button>
+      <button class="open-drawer-right">Open Right</button>
+    </main>
+    <footer></footer>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="../dist/js/drawerfy.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('.drawer-left').drawerfy();
+    });
+  </script>
+</body>
+</html>
