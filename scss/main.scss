@@ -1,5 +1,64 @@
-$color: #222;
+%drawer-style {
+  position: fixed;
+  z-index: 200;
+  top: 0;
 
-header {
-  color: $color;
+  overflow: hidden;
+
+  width: 300px;
+  height: 100%;
+
+  transition: transform .3s;
+
+  background-color: #ccc;
+}
+
+.drawer-right {
+  @extend %drawer-style;
+
+  right: 0;
+
+  transform: translateX(300px);
+
+  &.show {
+    transform: translateX(0);
+  }
+}
+
+.drawer-left {
+  @extend %drawer-style;
+
+  left: 0;
+
+  transform: translateX(-300px);
+
+  &.show {
+    transform: translateX(0);
+  }
+}
+
+.overlay {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+
+  overflow: hidden;
+
+  width: 0;
+  height: 0;
+
+  transition: opacity 0.3s, width 0s 0.3s, height 0s 0.3s;
+
+  opacity: 0;
+  background-color: #000;
+
+  &.active {
+    width: 100%;
+    height: 100%;
+
+    transition: opacity 0.3s;
+
+    opacity: 0.7;
+  }
 }
