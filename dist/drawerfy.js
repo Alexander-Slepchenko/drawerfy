@@ -41,13 +41,13 @@
     show: function () {
       $(this).addClass('show');
       $('body').addClass('active-menu');
-      $(methods.options.wrapper).addClass('wrap');
+      $(methods.options.wrapper).addClass('drawer-' + methods.options.type);
       $(methods.options.overlay).addClass('active');
     },
     hide: function () {
       $(this).removeClass('show');
       $('body').removeClass('active-menu');
-      $(methods.options.wrapper).removeClass('wrap');
+      $(methods.options.wrapper).removeClass('drawer-' + methods.options.type);
       $(methods.options.overlay).removeClass('active');
     },
     destroy: function () {
