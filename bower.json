@@ -6,9 +6,13 @@
   "keywords": [
     "drawer",
     "menu",
-    "navigation"
+    "navigation",
+    "jQuery"
   ],
   "ignore": [
-    ".*" 
-  ]
+    ".*"
+  ],
+  "dependencies": {
+    "jquery": ">= 1.7.0"
+  }
 }

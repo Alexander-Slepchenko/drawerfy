@@ -1,125 +1,90 @@
-(function(window) {
+(function ($) {
 
   'use strict';
 
-  /**
-   * Extend Object helper function.
-   */
-  function extend(a, b) {
-    for (var key in b) {
-      if (b.hasOwnProperty(key)) {
-        a[key] = b[key];
-      }
+  var namespace = 'drawerfy';
+
+  var methods = {
+    init: function (options) {
+      methods.options = $.extend({
+        open: '.drawer-open',
+        close: '.drawer-close',
+        type: 'slide-left',
+        overlay: '.overlay',
+        wrapper: '.wrapper'
+      },options);
+
+      return this.each(function () {
+
+        var _this = this;
+        var $this = $(this);
+        var data = $this.data(namespace);
+
+        if (!data) {
+          $this.data(namespace, { options: options });
+
+          $(methods.options.open).on('click', function () {
+            methods.show.call(_this);
+          });
+
+          $(methods.options.close).on('click', function () {
+            methods.hide.call(_this);
+          });
+
+          $(methods.options.overlay).on('click', function () {
+            methods.hide.call(_this);
+          });
+        }
+
+      });
+    },
+    show: function () {
+      $(this).addClass('show');
+      $('body').addClass('active-menu');
+      $(methods.options.wrapper).addClass('wrap');
+      $(methods.options.overlay).addClass('active');
+    },
+    hide: function () {
+      $(this).removeClass('show');
+      $('body').removeClass('active-menu');
+      $(methods.options.wrapper).removeClass('wrap');
+      $(methods.options.overlay).removeClass('active');
+    },
+    destroy: function () {
+      return this.each(function () {
+
+        var _this = this;
+        var $this = $(this);
+
+        $(methods.options.open).off('click', function () {
+          methods.show.call(_this);
+        });
+
+        $(methods.options.close).off('click', function () {
+          methods.hide.call(_this);
+        });
+
+        $(methods.options.overlay).off('click', function () {
+          methods.hide.call(_this);
+        });
+
+        $this
+          .removeData(namespace)
+          .remove();
+      });
     }
-    return a;
-  }
+  };
 
-  /**
-   * Each helper function.
-   */
-  function each(collection, callback) {
-    for (var i = 0; i < collection.length; i++) {
-      var item = collection[i];
-      callback(item);
+  $.fn.drawerfy = function (method) {
+    if (methods[method]) {
+      return methods[method].apply(
+        this,
+        Array.prototype.slice.call(arguments, 1)
+      );
+    } else if (typeof method === 'object' || !method) {
+      return methods.init.apply(this, arguments);
+    } else {
+      $.error('Method ' + method + ' does not exist on jQuery.' + namespace);
     }
-  }
-
-  /**
-   * Menu Constructor.
-   */
-  function drawerfy(options) {
-    this.options = extend({}, this.options);
-    extend(this.options, options);
-    this._init();
-  }
-
-  /**
-   * Menu Options.
-   */
-  drawerfy.prototype.options = {
-    wrapper: '.wrapper',
-    type: 'slide-left',
-    open: '.drawer-open',
-    close: '.drawer-close',
-    overlay: '.overlay'
   };
-
-  /**
-   * Initialise Menu.
-   */
-  drawerfy.prototype._init = function() {
-    this.body = document.body;
-    this.wrapper = document.querySelector(this.options.wrapper);
-    this.overlay = document.querySelector(this.options.overlay);
-    this.menu = document.querySelector('.drawer-' + this.options.type);
-    this.closeMenu = document.querySelector(this.options.close);
-    this.openMenu = document.querySelector(this.options.open);
-    this._initEvents();
-  };
-
-  /**
-   * Initialise Menu Events.
-   */
-  drawerfy.prototype._initEvents = function() {
-    this.openMenu.addEventListener('click', function(e){      
-      e.preventDefault();
-      this.open();
-    }.bind(this));
-    
-    this.closeMenu.addEventListener('click', function(e) {
-      e.preventDefault();
-      this.close();
-    }.bind(this));
-
-    this.overlay.addEventListener('click', function(e) {
-      e.preventDefault();
-      this.close();
-    }.bind(this));
-  };
-
-  /**
-   * Open Menu.
-   */
-  drawerfy.prototype.open = function() {
-    this.body.classList.add('active-menu');
-    this.wrapper.classList.add('active-' + this.options.type);
-    this.menu.classList.add('active');
-    this.overlay.classList.add('active');
-    this.disableMenuOpeners();
-  };
-
-  /**
-   * Close Menu.
-   */
-  drawerfy.prototype.close = function() {
-    this.body.classList.remove('active-menu');
-    this.wrapper.classList.remove('active-' + this.options.type);
-    this.menu.classList.remove('active');
-    this.overlay.classList.remove('active');
-    this.enableMenuOpeners();
-  };
-
-  /**
-   * Disable Menu Openers.
-   */
-  drawerfy.prototype.disableMenuOpeners = function() {
-    each(this.openMenu, function(item) {
-      item.disabled = true;
-    });
-  };
-
-  /**
-   * Enable Menu Openers.
-   */
-  drawerfy.prototype.enableMenuOpeners = function() {
-    each(this.openMenu, function(item) {
-      item.disabled = false;
-    });
-  };
-
-  /**
-   * Add to global namespace.
-   */
-  window.drawerfy = drawerfy;
-
-})(window);
+})(jQuery);
