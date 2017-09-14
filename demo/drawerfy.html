@@ -31,7 +31,12 @@
   <script src="../dist/js/drawerfy.min.js"></script>
   <script>
     $(document).ready(function() {
-      $('.drawer-left').drawerfy();
+      $('.drawer-left').drawerfy({
+        open: '.open-drawer-left'
+      });
+      $('.drawer-right').drawerfy({
+        open: '.open-drawer-right'
+      });
     });
   </script>
 </body>
