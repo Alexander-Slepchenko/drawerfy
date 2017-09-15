@@ -1,3 +1,5 @@
+$drawer-width: 300px;
+
 %drawer-style {
   position: fixed;
   z-index: 200;
@@ -5,7 +7,7 @@
 
   overflow: hidden;
 
-  width: 300px;
+  width: $drawer-width;
   height: 100%;
 
   transition: transform .3s;
@@ -13,26 +15,28 @@
   background-color: #ccc;
 }
 
-.drawer-right {
+.drawer-right,
+.drawer-push-right {
   @extend %drawer-style;
 
   right: 0;
 
-  transform: translateX(300px);
+  transform: translateX($drawer-width);
 
-  &.show {
+  &.active {
     transform: translateX(0);
   }
 }
 
-.drawer-left {
+.drawer-left,
+.drawer-push-left {
   @extend %drawer-style;
 
   left: 0;
 
   transform: translateX(-300px);
 
-  &.show {
+  &.active {
     transform: translateX(0);
   }
 }
@@ -60,5 +64,15 @@
     transition: opacity 0.3s;
 
     opacity: 0.7;
+  }
+}
+
+.wrapper {
+  &.push-right {
+    transform: translateX(-300px);
+  }
+
+  &.push-left {
+    transform: translateX(300px);
   }
 }
