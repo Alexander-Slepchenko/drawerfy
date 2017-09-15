@@ -21,50 +21,57 @@
         var data = $this.data(namespace);
 
         if (!data) {
-          $this.data(namespace, { options: options });
 
-          $(methods.options.open).on('click', function () {
+          $(methods.options.open).on('click.' + namespace, function () {
             methods.show.call(_this);
           });
 
-          $(methods.options.close).on('click', function () {
+          $(methods.options.close).on('click.' + namespace, function () {
             methods.hide.call(_this);
           });
 
-          $(methods.options.overlay).on('click', function () {
+          $(methods.options.overlay).on('click.' + namespace, function () {
             methods.hide.call(_this);
           });
+
+          $this.data(namespace, { options: methods.options });
+
         }
 
       });
     },
+
     show: function () {
-      $(this).addClass('show');
+      var data = $(this).data(namespace);
+      $(this).addClass('active');
       $('body').addClass('active-menu');
-      $(methods.options.wrapper).addClass('wrap');
+      $(methods.options.wrapper).addClass(data.options.type);
       $(methods.options.overlay).addClass('active');
     },
+
     hide: function () {
-      $(this).removeClass('show');
+      var data = $(this).data(namespace);
+      $(this).removeClass('active');
       $('body').removeClass('active-menu');
-      $(methods.options.wrapper).removeClass('wrap');
+      $(methods.options.wrapper).removeClass(data.options.type);
       $(methods.options.overlay).removeClass('active');
     },
+
     destroy: function () {
       return this.each(function () {
 
         var _this = this;
         var $this = $(this);
 
-        $(methods.options.open).off('click', function () {
+        $(methods.options.open).off('click.' + namespace, function () {
           methods.show.call(_this);
         });
 
-        $(methods.options.close).off('click', function () {
+        $(methods.options.close).off('click.' + namespace, function () {
           methods.hide.call(_this);
         });
 
-        $(methods.options.overlay).off('click', function () {
+        $(methods.options.overlay).off('click.' + namespace, function () {
           methods.hide.call(_this);
         });
 
@@ -77,10 +84,7 @@
 
   $.fn.drawerfy = function (method) {
     if (methods[method]) {
-      return methods[method].apply(
-        this,
-        Array.prototype.slice.call(arguments, 1)
-      );
+      return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
     } else if (typeof method === 'object' || !method) {
       return methods.init.apply(this, arguments);
     } else {

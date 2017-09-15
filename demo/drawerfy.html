@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Drawerfy - Demo</title>
+  <link href="../dist/css/drawerfy.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+</head>
+<body>
+  <div class="overlay"></div>
+  <nav class="drawer-left">
+    <li><a href="">Demo</a></li>
+    <li><a href="">Demo</a></li>
+    <li><a href="">Demo</a></li>
+  </nav>
+  <nav class="drawer-right">
+    <li><a href="">Demo</a></li>
+    <li><a href="">Demo</a></li>
+    <li><a href="">Demo</a></li>
+  </nav>
+  <nav class="drawer-push-left">
+    <li><a href="">Demo</a></li>
+    <li><a href="">Demo</a></li>
+    <li><a href="">Demo</a></li>
+  </nav>
+  <nav class="drawer-push-right">
+    <li><a href="">Demo</a></li>
+    <li><a href="">Demo</a></li>
+    <li><a href="">Demo</a></li>
+  </nav>
+  <div class="wrapper">
+    <header></header>
+    <main>
+      <div class="container">
+        <button class="open-drawer-left">Slide Left</button>
+        <button class="open-drawer-right">Slide Right</button>
+        <button class="open-drawer-push-left">Push Left</button>
+        <button class="open-drawer-push-right">Push Right</button>
+      </div>
+    </main>
+    <footer></footer>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="../dist/js/drawerfy.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('.drawer-left').drawerfy({
+        open: '.open-drawer-left'
+      });
+
+      $('.drawer-right').drawerfy({
+        open: '.open-drawer-right',
+        type: 'slide-right'
+      });
+
+      $('.drawer-push-left').drawerfy({
+        open: '.open-drawer-push-left',
+        type: 'push-left'
+      });
+
+      $('.drawer-push-right').drawerfy({
+        open: '.open-drawer-push-right',
+        type: 'push-right'
+      });
+    });
+  </script>
+</body>
+</html>
