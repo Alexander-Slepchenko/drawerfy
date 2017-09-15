@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Drawerfy - Demo</title>
   <link href="../dist/css/drawerfy.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 </head>
 <body>
   <div class="overlay"></div>
@@ -19,11 +20,25 @@
     <li><a href="">Demo</a></li>
     <li><a href="">Demo</a></li>
   </nav>
+  <nav class="drawer-push-left">
+    <li><a href="">Demo</a></li>
+    <li><a href="">Demo</a></li>
+    <li><a href="">Demo</a></li>
+  </nav>
+  <nav class="drawer-push-right">
+    <li><a href="">Demo</a></li>
+    <li><a href="">Demo</a></li>
+    <li><a href="">Demo</a></li>
+  </nav>
   <div class="wrapper">
     <header></header>
     <main>
-      <button class="open-drawer-left">Open Left</button>
-      <button class="open-drawer-right">Open Right</button>
+      <div class="container">
+        <button class="open-drawer-left">Slide Left</button>
+        <button class="open-drawer-right">Slide Right</button>
+        <button class="open-drawer-push-left">Push Left</button>
+        <button class="open-drawer-push-right">Push Right</button>
+      </div>
     </main>
     <footer></footer>
   </div>
@@ -34,8 +49,20 @@
       $('.drawer-left').drawerfy({
         open: '.open-drawer-left'
       });
+
       $('.drawer-right').drawerfy({
-        open: '.open-drawer-right'
+        open: '.open-drawer-right',
+        type: 'slide-right'
+      });
+
+      $('.drawer-push-left').drawerfy({
+        open: '.open-drawer-push-left',
+        type: 'push-left'
+      });
+
+      $('.drawer-push-right').drawerfy({
+        open: '.open-drawer-push-right',
+        type: 'push-right'
       });
     });
   </script>
