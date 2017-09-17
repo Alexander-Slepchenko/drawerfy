@@ -22,16 +22,19 @@
 
         if (!data) {
 
-          $(methods.options.open).on('click.' + namespace, function () {
-            methods.show.call(_this);
+          $(methods.options.open).on('click.' + namespace, function (e) {
+            e.preventDefault();
+            methods.open.call(_this);
           });
 
-          $(methods.options.close).on('click.' + namespace, function () {
-            methods.hide.call(_this);
+          $(methods.options.close).on('click.' + namespace, function (e) {
+            e.preventDefault();
+            methods.close.call(_this);
           });
 
-          $(methods.options.overlay).on('click.' + namespace, function () {
-            methods.hide.call(_this);
+          $(methods.options.overlay).on('click.' + namespace, function (e) {
+            e.preventDefault();
+            methods.close.call(_this);
           });
 
           $this.data(namespace, { options: methods.options });
@@ -41,7 +44,7 @@
       });
     },
 
-    show: function () {
+    open: function () {
       var data = $(this).data(namespace);
       $(this).addClass('active');
       $('body').addClass('active-menu');
@@ -49,7 +52,7 @@
       $(methods.options.overlay).addClass('active');
     },
 
-    hide: function () {
+    close: function () {
       var data = $(this).data(namespace);
       $(this).removeClass('active');
       $('body').removeClass('active-menu');
@@ -64,15 +67,15 @@
         var $this = $(this);
 
         $(methods.options.open).off('click.' + namespace, function () {
-          methods.show.call(_this);
+          methods.open.call(_this);
         });
 
         $(methods.options.close).off('click.' + namespace, function () {
-          methods.hide.call(_this);
+          methods.close.call(_this);
         });
 
         $(methods.options.overlay).off('click.' + namespace, function () {
-          methods.hide.call(_this);
+          methods.close.call(_this);
         });
 
         $this
