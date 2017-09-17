@@ -38,6 +38,7 @@
         <button class="open-drawer-right">Slide Right</button>
         <button class="open-drawer-push-left">Push Left</button>
         <button class="open-drawer-push-right">Push Right</button>
+        <button class="method-open-drawer">Method Push Right</button>
       </div>
     </main>
     <footer></footer>
@@ -64,6 +65,10 @@
         open: '.open-drawer-push-right',
         type: 'push-right'
       });
+      $('.method-open-drawer').on('click', function () {
+        $('.drawer-push-right').drawerfy('open');
+      });
+
     });
   </script>
 </body>
